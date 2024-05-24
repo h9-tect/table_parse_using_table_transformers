@@ -1,0 +1,7 @@
+Date,Release,Changed by,Change Description
+2013-03-15,4.1.1,AUTOSAR Administration,"Update of Antitheft Warning Sys- tem"" functionality Software Compo- nent Decomposition Detailed ""Operation Mode Manager"" signal levels inside"" Terminal Clamp Control"" functionality Updated description for ""Convertible Control"" functionalitv"
+2011-12-22,4.0.3,AUTOSAR Administration,Inconsistencies fixed between Appli- cation Interfaces Master Table and Body Domain Explanatory Documentl all functions impacted Update of all functionality Software Components Decompositions for better readability Removed ParkDistance Control func-  tionalitv
+2010-09-30,3.1.5,AUTOSAR Administration,"Update of all chapters according to the introduction of the concept ""port blue print"" all functions impacted Inconsistencies fixed between Appli- cation Interfaces Master Table and explanatory document for the body domain: all functions impacted"
+2010-02-02,3.1.4,AUTOSAR Administration,"uomam= an TulolionS Mpauicu Functions added ExteriorLights, ATWS, Horn, ParkDistanceControl, DefrostControl; TerminalClamp Con- trol, Immobilizer, SeatAdjustment; SeatClimatization, PassiveEntry, Mir-| ror and RemoteKeylessEntry; Con- vertibleControl, BodySensors, Key- Pad Functions maintenance on Interior Light, WiperWasher, Central Locking Leaal disclaimer revised"
+2008-08-13,3.1.1,AUTOSAR Administration,Legal disclaimer revised
+2007-12-21,3.0.1,AUTOSAR Administration,Initial Release

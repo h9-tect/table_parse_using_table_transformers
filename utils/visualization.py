@@ -1,7 +1,6 @@
 import matplotlib.pyplot as plt
 import matplotlib.patches as patches
 from matplotlib.patches import Patch
-from PIL import ImageDraw
 
 def visualize_detected_tables(img, det_tables):
     plt.imshow(img, interpolation="lanczos")
@@ -46,10 +45,7 @@ def visualize_detected_tables(img, det_tables):
     plt.axis('off')
     return fig
 
-def plot_results(cells, class_to_visualize):
-    if class_to_visualize not in structure_model.config.id2label.values():
-        raise ValueError("Class should be one of the available classes")
-
+def plot_results(cropped_table, cells, class_to_visualize):
     plt.figure(figsize=(16, 10))
     plt.imshow(cropped_table)
     ax = plt.gca()
@@ -64,3 +60,4 @@ def plot_results(cells, class_to_visualize):
             text = f'{cell["label"]}: {score:0.2f}'
             ax.text(xmin, ymin, text, fontsize=15, bbox=dict(facecolor='yellow', alpha=0.5))
     plt.axis('off')
+    return plt.gcf()

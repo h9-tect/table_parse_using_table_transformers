@@ -2,7 +2,7 @@ import streamlit as st
 from PIL import Image
 from utils.model import load_detection_model, load_structure_model
 from utils.preprocessing import prepare_image, prepare_cropped_image
-from utils.detection import detect_tables, detect_cells
+from utils.detection import detect_tables, detect_cells, outputs_to_objects, objects_to_crops, get_cell_coordinates_by_row
 from utils.visualization import visualize_detected_tables, plot_results
 from utils.ocr import apply_ocr, save_csv
 
@@ -17,6 +17,10 @@ uploaded_file = st.file_uploader("Upload an image containing a table", type=["pn
 if uploaded_file is not None:
     image = Image.open(uploaded_file).convert("RGB")
     st.image(image, caption='Uploaded Image', use_column_width=True)
+
+    # Add "no object" to id2label if not present
+    if len(detection_model.config.id2label) not in detection_model.config.id2label:
+        detection_model.config.id2label[len(detection_model.config.id2label)] = "no object"
 
     # Detect tables
     pixel_values = prepare_image(image, device)
@@ -47,8 +51,8 @@ if uploaded_file is not None:
     st.write(cells)
 
     # Visualize cells
-    plot_results(cells, "table row")
-    st.pyplot()
+    fig = plot_results(cropped_table, cells, "table row")
+    st.pyplot(fig)
 
     # Apply OCR
     cell_coordinates = get_cell_coordinates_by_row(cells)
