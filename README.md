@@ -2,6 +2,10 @@
 
 This project is a Streamlit app for detecting tables in images, cropping them, detecting cells within the cropped tables, and applying OCR (Optical Character Recognition) to extract the table data into a CSV file.
 
+<a target="_blank" href="https://colab.research.google.com/github/AbdElrahman-A-Eid/table_parse_using_table_transformers/blob/main/Colab_Demo.ipynb">
+  <img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open Demo In Colab"/>
+</a>
+
 ## Directory Structure
 
 The project is structured as follows:
