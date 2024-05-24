@@ -2,9 +2,10 @@ import streamlit as st
 from PIL import Image
 from utils.model import load_detection_model, load_structure_model
 from utils.preprocessing import prepare_image, prepare_cropped_image
+from utils.postprocessing import outputs_to_objects, objects_to_crops
 from utils.detection import detect_tables, detect_cells
 from utils.visualization import visualize_detected_tables, plot_results
-from utils.ocr import apply_ocr, save_csv
+from utils.ocr import apply_ocr, save_csv, get_cell_coordinates_by_row
 
 # Load models
 detection_model, device = load_detection_model()
