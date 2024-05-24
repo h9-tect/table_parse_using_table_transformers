@@ -5,6 +5,8 @@ from utils.preprocessing import prepare_image, prepare_cropped_image
 from utils.detection import detect_tables, detect_cells
 from utils.visualization import visualize_detected_tables, plot_results
 from utils.ocr import apply_ocr, save_csv
+from utils.preprocessing import outputs_to_objects
+
 
 # Load models
 detection_model, device = load_detection_model()
@@ -21,6 +23,7 @@ if uploaded_file is not None:
     # Detect tables
     pixel_values = prepare_image(image, device)
     outputs = detect_tables(detection_model, pixel_values)
+    # func that takes table, processes it and converts it into a list of dicts each one represents a detected obj and its label
     objects = outputs_to_objects(outputs, image.size, detection_model.config.id2label)
 
     st.write("Detected tables:")
