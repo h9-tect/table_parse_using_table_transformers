@@ -46,8 +46,8 @@ def visualize_detected_tables(img, det_tables):
     plt.axis('off')
     return fig
 
-def plot_results(cells, class_to_visualize):
-    if class_to_visualize not in structure_model.config.id2label.values():
+def plot_results(cells, class_to_visualize, id2label):
+    if class_to_visualize not in id2label.values():
         raise ValueError("Class should be one of the available classes")
 
     plt.figure(figsize=(16, 10))

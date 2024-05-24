@@ -22,7 +22,6 @@ if uploaded_file is not None:
     # Detect tables
     pixel_values = prepare_image(image, device)
     outputs = detect_tables(detection_model, pixel_values)
-    
     objects = outputs_to_objects(outputs, image.size, detection_model.config.id2label)
 
     st.write("Detected tables:")
@@ -49,7 +48,7 @@ if uploaded_file is not None:
     st.write(cells)
 
     # Visualize cells
-    plot_results(cells, "table row")
+    plot_results(cells, "table row", structure_model.config.id2label)
     st.pyplot()
 
     # Apply OCR
