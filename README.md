@@ -97,7 +97,7 @@ This file contains functions for applying OCR and saving the results as a CSV.
 
 To set up the project, execute the following commands:
 ```sh
-git clone <repository_url>  # Clone the repository
+git clone https://github.com/h9-tect/table_parse_using_table_transformers.git  # Clone the repository
 cd streamlit_table_app      # Navigate to the project directory
 pip install -r requirements.txt  # Install dependencies
 ```
