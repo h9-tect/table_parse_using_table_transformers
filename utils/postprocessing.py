@@ -13,6 +13,9 @@ def rescale_bboxes(out_bbox, size):
     return b
 
 def outputs_to_objects(outputs, img_size, id2label):
+    # update id2label to include "no object"
+    id2label[len(id2label)] = "no object"
+
     m = outputs.logits.softmax(-1).max(-1)
     pred_labels = list(m.indices.detach().cpu().numpy())[0]
     pred_scores = list(m.values.detach().cpu().numpy())[0]

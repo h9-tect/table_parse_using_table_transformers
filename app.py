@@ -22,6 +22,7 @@ if uploaded_file is not None:
     # Detect tables
     pixel_values = prepare_image(image, device)
     outputs = detect_tables(detection_model, pixel_values)
+    
     objects = outputs_to_objects(outputs, image.size, detection_model.config.id2label)
 
     st.write("Detected tables:")
