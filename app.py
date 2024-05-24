@@ -48,7 +48,7 @@ if uploaded_file is not None:
     st.write(cells)
 
     # Visualize cells
-    plot_results(cells, "table row", structure_model.config.id2label)
+    plot_results(cells, "table row", structure_model.config.id2label, cropped_table)
     st.pyplot()
 
     # Apply OCR
