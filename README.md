@@ -23,6 +23,8 @@ streamlit_table_app/
 
 │ ├── preprocessing.py
 
+│ ├── postprocessing.py
+
 │ ├── detection.py
 
 │ ├── visualization.py
@@ -73,6 +75,16 @@ This file contains functions for preparing images to be compatible with the mode
 - `prepare_image(image, device)`: Prepares and normalizes the image for the table detection model.
 - `prepare_cropped_image(cropped_image, device)`: Prepares and normalizes the cropped table image for the structure recognition model.
 
+### utils/postprocessing.py
+
+This file contains functions for processing and manipulating the output of both the detection and structure models.
+
+#### Functions:
+- `outputs_to_objects(outputs, img_size, id2label)`: Extract table objects (including label, score, and bounding box) from the detection model output.
+- `objects_to_crops(img, tokens, objects, class_thresholds, padding=10)`: Process the detection model's bounding boxes into cropped table images and cropped tokens.
+- `box_cxcywh_to_xyxy(x)`: Transform bounding box from (top lift corner coordinates, width, and hight) into (top lift corner coordinates, bottom right corner coordinates).
+- `rescale_bboxes(out_bbox, size)`: Rescale bounding boxes as per the provided image size.
+
 ### utils/detection.py
 
 This file contains functions for detecting tables and cells in the images.
@@ -87,7 +99,7 @@ This file contains functions for visualizing detected tables and cells.
 
 #### Functions:
 - `visualize_detected_tables(img, det_tables)`: Visualizes tables detected in the image.
-- `plot_results(cells, class_to_visualize)`: Visualizes detected cells within the cropped table.
+- `plot_results(cells, class_to_visualize, id2label, cropped table)`: Visualizes detected cells within the cropped table.
 
 ### utils/ocr.py
 
@@ -96,14 +108,18 @@ This file contains functions for applying OCR and saving the results as a CSV.
 #### Functions:
 - `apply_ocr(cell_coordinates, cropped_table)`: Performs OCR on detected cells to extract text.
 - `save_csv(data)`: Saves the extracted table data into a CSV file.
+- `get_cell_coordinates_by_row(table_data)`: Geta the coordinates of the cells in each row of the extracted table.
 
 ## Installation
 
 To set up the project, execute the following commands:
 ```sh
-git clone https://github.com/h9-tect/table_parse_using_table_transformers.git  # Clone the repository
-cd streamlit_table_app      # Navigate to the project directory
-pip install -r requirements.txt  # Install dependencies
+# Clone the repository
+git clone https://github.com/h9-tect/table_parse_using_table_transformers.git
+# Navigate to the project directory
+cd table_parse_using_table_transformers
+# Install dependencies
+pip install -r requirements.txt
 ```
 ## Usage
 
